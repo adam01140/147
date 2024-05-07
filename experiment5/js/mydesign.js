@@ -4,13 +4,13 @@
 function getInspirations() {
   return [
     {
-      name: "Water On Glass",
+      name: "Water Bubbles",
       assetUrl: "https://cdn.glitch.global/a2730838-13cc-40b9-bcf9-30836eb417d1/21256-bigthumbnail.jpg?v=1715106973066",
       credit: "Red soccer ball"
     },
     {
       name: "Moon and Stars",
-      assetUrl: "https://cdn.glitch.global/a2730838-13cc-40b9-bcf9-30836eb417d1/50-502118_delicate-blue-water-droplets-png-download-water-drop.jpg?1715094654450",
+      assetUrl: "https://cdn.glitch.global/a2730838-13cc-40b9-bcf9-30836eb417d1/OIP.jpg?v=1715113501831",
       credit: "Moon and stars"
     },
     {
@@ -51,24 +51,37 @@ function getInspirations() {
       });
     }
   } else if (inspiration.name === "Moon and Stars") {
+	  
+	  // Increasing the size of the moon
+    let moonRadius = width / 8;  // Larger radius for the moon
     design.fg.push({
-      shape: 'circle',
-      x: width / 2,
-      y: height / 2,
-      r: width / 10,
-      fill: 255
-    });
-    let numberOfStars = 200;
-    for (let i = 0; i < numberOfStars; i++) {
-      design.fg.push({
         shape: 'circle',
-        x: random(width),
-        y: random(height),
-        r: random(width / 100, width / 50),
-        fill: 255
-      });
-    }
-  } else if (inspiration.name === "Water On Glass") {
+        x: width / 2,
+        y: height / 2,
+        r: moonRadius,
+        fill: 255  // White color for the moon
+    });
+
+
+let numberOfStars = 300;  // More stars but smaller
+    for (let i = 0; i < numberOfStars; i++) {
+        let starX = random(width);
+        let starY = random(height);
+        let distanceToMoonCenter = dist(starX, starY, width / 2, height / 2);
+        
+        // Check if the star is outside the moon's area
+        if (distanceToMoonCenter > moonRadius + 2) {  // Adding a small buffer to ensure clear separation
+            design.fg.push({
+                shape: 'circle',
+                x: starX,
+                y: starY,
+                r: random(width / 200, width / 150),  // Smaller stars
+                fill: 255  // White color for stars
+            });
+	}}
+    
+  
+  } else if (inspiration.name === "Water Bubbles") {
     for (let i = 0; i < 50; i++) {
       design.fg.push({
         shape: 'rect',

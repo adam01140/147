@@ -9,9 +9,9 @@ function getInspirations() {
       credit: "Red soccer ball"
     },
     {
-      name: "Water On Glass",
+      name: "Moon and Stars",
       assetUrl: "https://cdn.glitch.global/a2730838-13cc-40b9-bcf9-30836eb417d1/50-502118_delicate-blue-water-droplets-png-download-water-drop.jpg?1715094654450",
-      credit: "Water Droplet, Bing Images"
+      credit: "Moon and stars"
     },
     {
       name: "City Skyline",  // Changed from "Yellow Cup" to "City Skyline"
@@ -19,18 +19,14 @@ function getInspirations() {
       credit: "Yellow Cup, Bing Images"
     }
   ];
-}
-
-function initDesign(inspiration) {
-  // Set the canvas size based on the container
-  let canvasContainer = $('.image-container'); // Select the container using jQuery
-  let canvasWidth = canvasContainer.width(); // Get the width of the container
+}function initDesign(inspiration) {
+  let canvasContainer = $('.image-container');
+  let canvasWidth = canvasContainer.width();
   let aspectRatio = inspiration.image.height / inspiration.image.width;
-  let canvasHeight = canvasWidth * aspectRatio; // Calculate the height based on the aspect ratio
+  let canvasHeight = canvasWidth * aspectRatio;
   resizeCanvas(canvasWidth, canvasHeight);
-  $(".caption").text(inspiration.credit); // Set the caption text
+  $(".caption").text(inspiration.credit);
 
-  // Add the original image to #original
   const imgHTML = `<img src="${inspiration.assetUrl}" style="width:${canvasWidth}px;">`;
   $('#original').empty();
   $('#original').append(imgHTML);
@@ -40,60 +36,67 @@ function initDesign(inspiration) {
     fg: []
   };
 
-
-
-	
- if (inspiration.name === "City Skyline") {
+  if (inspiration.name === "City Skyline") {
     let numberOfBuildings = 70;
     let baseWidth = width / numberOfBuildings;
     for (let i = 0; i < numberOfBuildings; i++) {
-      let buildingHeight = random(height * 0.1, height * 0.5);  // Adjust the height range for buildings
+      let buildingHeight = random(height * 0.1, height * 0.5);
       design.fg.push({
         shape: 'rect',
         x: i * baseWidth,
-        y: height - buildingHeight,  // This places buildings starting from the bottom of the canvas
+        y: height - buildingHeight,
         w: baseWidth - 10,
         h: buildingHeight,
-        fill: random(50, 200)  // Grayscale to simulate building materials
+        fill: random(50, 200)
+      });
+    }
+  } else if (inspiration.name === "Moon and Stars") {
+    design.fg.push({
+      shape: 'circle',
+      x: width / 2,
+      y: height / 2,
+      r: width / 10,
+      fill: 255
+    });
+    let numberOfStars = 200;
+    for (let i = 0; i < numberOfStars; i++) {
+      design.fg.push({
+        shape: 'circle',
+        x: random(width),
+        y: random(height),
+        r: random(width / 100, width / 50),
+        fill: 255
       });
     }
   } else if (inspiration.name === "Water On Glass") {
-    // Add black rectangles on the sides
     for (let i = 0; i < 50; i++) {
       design.fg.push({
         shape: 'rect',
-        x: random(width * 0.1), // Left side
+        x: random(width * 0.1),
         y: random(height),
         w: random(width * 0.1),
         h: random(height / 10),
-        fill: 0 // Black color
+        fill: 0
       });
       design.fg.push({
         shape: 'rect',
-        x: width - random(width * 0.1), // Right side
+        x: width - random(width * 0.1),
         y: random(height),
         w: random(width * 0.1),
         h: random(height / 10),
-        fill: 0 // Black color
+        fill: 0
       });
-    } 
-  
-  
-  
-  
-
-    // Add white circles in the middle
+    }
     for (let i = 0; i < 50; i++) {
       design.fg.push({
         shape: 'circle',
         x: width / 2 + random(-width * 0.2, width * 0.2),
         y: random(height),
         r: random(width / 20),
-        fill: 255 // White color
+        fill: 255
       });
     }
   } else {
-    // Default to using rectangles for other inspirations
     for (let i = 0; i < 100; i++) {
       design.fg.push({
         shape: 'rect',
@@ -108,6 +111,7 @@ function initDesign(inspiration) {
 
   return design;
 }
+
 
 function renderDesign(design, inspiration) {
   background(design.bg);

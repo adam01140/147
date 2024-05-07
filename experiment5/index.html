@@ -79,16 +79,23 @@
 
 			<div class="minor-section">
 				<h2>Description</h2>
-				<p>In this programming assignment, we're building a generator that directly reads inspiring images, renders parameterized images, and adjusts its own designs to optimize an evaluation score.</p>
+				<p>In this programming assignment, I built a generator that directly reads 1 of 3 inspiring images and then uses that image to render parameterized images </p>
+				<br><p> It then adjusts its own designs to optimize an evaluation score and find the image that best fits our inspiration.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Technical</h2>
                 <ol>
-                    <li>This project integrates inspiring images that are selectable from the drop-down on the display page. (This could be three distinct images or one image with three different sets of clues that cause the generator to interpret it in a different way.)</li>
-                    <li>The design object is initialized in inspiration-specific ways. Selecting different inspirations should lead to different behaviors of initDesign.</li>
-                    <li>The design is rendered in a way that can possibly produce results that feel related to the inspiring images. (The 30-second annealing trick should produce images that resemble the inspiring image if we squint.)</li>
-                    <li>The mutation process makes incremental changes to your design. The rate parameter should be implemented in a way that allows the user to almost stop exploration by sliding the rate down to 1%. Your generator must respond to the mutation rate slider.</li>
+                    <li>This project integrates inspiring images that are selectable from the drop-down on the display page. </li>
+                    <li>Depending on what inspiring image is selected, the program uses different types of shapes. </li>
+					<li> The prgram also also varies the amount of shapes used based on each image .</li>
+                    <li>The design is rendered in a way that is meant to mimic the inspiring images. </li>
+					<li>If the red ball is selected, the program uses a unique mix of rectangles and differently shaped circles/eleipces to render it </li>
+                    <li>If the water droplet is selected, the program uses nothing but circle shapes to render it </li>
+					<li>If the yellow cup is selected, the program uses strictly rectangles to render it </li>
+					<li>The mutation process makes incremental changes to your design. </li>
+					<li> The rate parameter should is implemented in a way that allows the user to almost stop exploration by sliding the rate down to 1%. </li>
+					<li> The generator responds accuratly to the mutation rate slider.</li>
                 </ol>
 			</div>
 
@@ -100,7 +107,15 @@
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>I was a little embrarrassed that I didn't have this wired by the time the assignment came up. But uh, being human.</p>
+				<p>To be honest I struggled with this assignment.</p>
+				<br>
+				<p>I tried my best to incorperate colors into my image generation but I couldn't get it to work no matter what I did.</p>
+				<br>
+				<p>I looked online through plently of documentaion but for some reason the colors always came out mono-chrome.</p>
+				<br>
+				<p>With that being said though, I still learned a lot throughout this project </p>
+				<br>
+				<p> I learned a lot about image generation and how to change the variety of shapes used and how to change the amount of shapes implemented.</p>
 			</div>
 
 		</section>

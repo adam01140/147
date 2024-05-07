@@ -19,7 +19,10 @@ function getInspirations() {
       credit: "Yellow Cup, Bing Images"
     }
   ];
-}function initDesign(inspiration) {
+}
+
+
+function initDesign(inspiration) {
   let canvasContainer = $('.image-container');
   let canvasWidth = canvasContainer.width();
   let aspectRatio = inspiration.image.height / inspiration.image.width;
